@@ -1,0 +1,12 @@
+.venv
+.git
+models
+scratch
+tests
+__pycache__
+*.pyc
+*.wav
+*.jpg
+.env
+README.md
+Makefile

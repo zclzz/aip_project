@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+tests/.tmp/
+models/
+scratch/
+.env
+*.wav

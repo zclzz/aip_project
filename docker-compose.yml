@@ -1,0 +1,28 @@
+services:
+  tts:
+    build: .
+    image: voxcpm2-tts:latest
+    container_name: voxcpm2-tts
+    ports:
+      - "${PORT:-8010}:8000"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      API_KEY: ${API_KEY:-}
+      DEVICE: ${DEVICE:-auto}
+    volumes:
+      - models:/models          # cached model weights (persist across restarts)
+    # --- hardening ---
+    read_only: true
+    tmpfs:
+      - /tmp:size=2g,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: unless-stopped
+    stop_grace_period: 15s
+
+volumes:
+  models:
